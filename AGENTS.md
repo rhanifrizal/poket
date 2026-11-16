@@ -86,7 +86,7 @@ Build **Poket**, a calm, approachable personal finance app with a Malaysian pers
 - Drift as persistence abstraction; native SQLite with SQLCipher considered for mobile/desktop
 - A separately validated encrypted web persistence adapter (IndexedDB/Web Crypto or an equivalent maintained solution)
 - Firebase Authentication for account identity only; authentication is not encryption
-- Client-side encrypted cloud backup and restore for launch, after dedicated key-recovery design and PoC; live sync is later
+- Client-side encrypted cross-platform backup and restore for launch using Google Drive; Firebase Authentication is identity only, iCloud backup is future scope, and live sync is later. Key recovery requires a separate design and PoC.
 - Camera/gallery/PDF receipt capture; OCR as optional assisted extraction, always user-confirmed
 - Local, bundled tax-rule datasets with signed/versioned releases considered later
 

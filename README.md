@@ -4,7 +4,7 @@
 **Tagline:** Your money, made clear.  
 **Status:** Product specification for an MVP; technical choices are proposed and must be validated in Phase 0.
 
-Poket is a simple personal finance app with a Malaysian tax-relief companion. Users record income and expenses, understand where their money goes, and see which expenses may qualify for personal income-tax relief.
+Poket is a simple personal finance app with a Malaysian tax-relief companion. Users record income and expenses, understand where their money goes, and see which expenses may qualify for personal income-tax relief. Launch targets are iOS, Android and web, with a searchable public feature page and a responsive authenticated finance app.
 
 ## Product principles
 1. **Simple first:** everyday money tracking must be faster than maintaining a spreadsheet.
@@ -32,7 +32,7 @@ Poket is a simple personal finance app with a Malaysian tax-relief companion. Us
 - Tax classification is an assistant feature, not tax advice. Users must be able to review and correct it.
 - Do not hard-code a tax year's limits into application logic. Tax rules are versioned data with sources and verification status.
 - Account registration is required and uses Firebase Authentication for identity only; it does not protect financial data by encryption.
-- Encrypted cloud backup and restore are launch requirements, subject to security and platform feasibility validation. Live multi-device sync is later scope.
+- Encrypted cross-platform backup and restore are launch requirements. Google Drive is the launch backup destination; Firebase remains the identity provider, and iCloud backup is future scope. Live multi-device sync is later.
 - No production backup, OCR, or authentication integration should be treated as complete until its security and platform feasibility are tested.
 
 ## Start here

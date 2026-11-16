@@ -38,7 +38,10 @@ Pain points:
 11. Tax dashboard: tracked eligible amount, cap/remaining amount where applicable, evidence status and review-needed items.
 12. Light/dark theme and English/Bahasa Malaysia-ready localisation.
 13. Offline-first local storage after registration.
-14. Encrypted cloud backup and restore using the approved platform storage approach; no readable financial data or receipt content is uploaded.
+14. Launch on iOS, Android and web, with responsive/adaptive layouts for phone, tablet and desktop widths.
+15. A public, searchable feature page that explains Poket and links to sign in or register for the Flutter web app.
+16. One logical user ledger across mobile and web. Users can move it between platforms using portable encrypted backup and restore; live sync is deferred.
+17. Encrypted cloud backup and restore using the user's Google Drive across iOS, Android and web. Firebase Authentication remains the app identity provider; Drive authorization is requested separately. No readable financial data or receipt content is uploaded.
 
 ### Should have (after core MVP is stable)
 - Receipt OCR that extracts candidate merchant/date/total and asks user to confirm.
@@ -102,6 +105,18 @@ Acceptance:
 - Receipt access requires app-level authorization where supported.
 - No receipt image or OCR text is uploaded in plaintext.
 
+### D. Discover and use Poket on the web
+1. A visitor can find a public feature page through web search.
+2. The page explains Poket's core money-tracking and tax-relief features in accessible, searchable content.
+3. `Sign in` and `Register` actions take the visitor to the Flutter web app's authentication flow.
+4. After authentication, the user can access the same logical ledger as on mobile by restoring or updating an encrypted backup.
+
+Acceptance:
+- Public feature content is crawlable and has appropriate page titles and metadata; search ranking is not guaranteed.
+- The authenticated finance app works responsively across phone, tablet and desktop browser widths.
+- Web users can store records locally and access the portable encrypted backup flow.
+- Signing in does not imply that another device is automatically synchronized; live sync remains out of launch scope.
+
 ## 6. Information architecture
 Primary navigation (bottom navigation on mobile; equivalent responsive navigation on web):
 - **Home** — summary and quick actions.
@@ -129,7 +144,9 @@ Do not use `Eligible` as an unconditional promise. A final tax return decision b
 - Critical offline flows work without network access.
 
 ## 9. Confirmed launch decisions and remaining questions
-- Launch platforms are Android and iOS; web/PWA is deferred until its storage and security approach is proven.
+- Launch platforms are iOS, Android and web. Web storage and security must pass Phase 0 validation before release.
+- The public feature page must be searchable and provide sign-in and registration actions. A semantic static page alongside the Flutter web app is the current implementation recommendation, not yet an approved technical decision.
+- The authenticated Flutter web app is responsive/adaptive and provides access to the same logical ledger across platforms via portable encrypted backup and restore.
 - Registration is required and uses Firebase Authentication for identity only; authentication does not imply sync or encryption.
 - Single-user versus shared-household scope and custom-category creation have not been confirmed; retain the current proposed single-user MVP and default categories until decided.
 - Wallet setup asks for the current balance. Whether zero or skipping is allowed remains open.
@@ -137,5 +154,5 @@ Do not use `Eligible` as an unconditional promise. A final tax return decision b
 - Refunds and recurring transactions are out of launch scope.
 - Launch currency is RM/MYR only. Future country/currency support will not include cross-currency transactions.
 - An app lock is optional and user-controlled.
-- Keep records locally and provide client-side encrypted cloud backup and restore before launch. Live sync is a later phase. Storage-provider choice, backup frequency/trigger, key recovery, and cross-platform restore remain open.
+- Keep records locally and provide client-side encrypted Google Drive backup and restore before launch. Backups use the user's Drive quota and the app-specific Drive area; backup timing, OAuth consent, key recovery and restore behavior require Phase 0 validation. iCloud backup is future scope; live sync is a later phase.
 - Target Assessment Year 2026 with comprehensive verified relief coverage. Add Assessment Year 2027 only if its official details are available and reviewed. Unverified rules are never guessed or presented as confirmed.

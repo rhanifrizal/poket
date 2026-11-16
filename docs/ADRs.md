@@ -4,10 +4,10 @@ Status labels: Proposed, Accepted, Rejected, Superseded.
 
 ## ADR-001 — Flutter as primary client framework
 **Status:** Proposed  
-**Decision:** Use Flutter for mobile and investigate web/PWA after platform-specific persistence and encryption validation.  
+**Decision:** Use Flutter for the authenticated iOS, Android and web application. The public searchable feature page is proposed as semantic static web content alongside the Flutter web app.
 **Reason:** One UI codebase and existing developer familiarity.  
 **Trade-off:** Browser storage, camera, file handling and encryption differ from native platforms.  
-**Validation:** Phase 0 platform PoC.
+**Validation:** Phase 0 validates persistence, encryption, receipt handling, routing and responsive behavior on iOS, Android and web. Review the landing-page implementation for search discoverability and accessibility.
 
 ## ADR-002 — Riverpod for state management and dependency injection
 **Status:** Proposed  
@@ -29,10 +29,10 @@ Status labels: Proposed, Accepted, Rejected, Superseded.
 
 ## ADR-005 — Local-first ledger with encrypted backup
 **Status:** Proposed  
-**Decision:** Core records are stored locally and usable offline after required registration. Launch includes client-side encrypted backup and restore. Live multi-device sync is deferred.  
+**Decision:** Core records are stored locally and usable offline after required registration. Launch includes client-side encrypted Google Drive backup and restore across iOS, Android and web. Live multi-device sync is deferred.
 **Reason:** Preserve offline use and offer recovery without exposing readable financial data to cloud storage.  
-**Trade-off:** Backup key recovery and provider integration add launch complexity; no live synchronization between devices.  
-**Validation:** Phase 0 backup/restore PoC, key-loss recovery design, and security review. Exact Google/iCloud storage services and cross-platform restore are undecided.
+**Trade-off:** Drive OAuth, user storage quotas and backup key recovery add launch complexity; iCloud-only users are not supported for backup at launch, and there is no live synchronization between devices.
+**Validation:** Phase 0 Google Drive API PoC using fake ciphertext, portable restore across iOS, Android and web, OAuth verification review, key-loss recovery design, and security review. iCloud backup remains future scope.
 
 ## ADR-006 — Separate native and web persistence security
 **Status:** Proposed  

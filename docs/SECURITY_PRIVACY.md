@@ -21,10 +21,12 @@ Consider:
 ## 3. Required controls
 - Local database encryption on supported native platforms, validated by PoC.
 - Encrypt receipt files at rest; store keys in platform secure storage.
-- Web must use an independently reviewed browser storage/key strategy; do not assume native SQLCipher applies.
+- Web must use an independently reviewed browser storage/key strategy; do not assume native SQLCipher or mobile keystore protections apply.
 - Use TLS for network transport.
 - Use Firebase Authentication for identity only; keep it separate from financial-data encryption and backup-key recovery.
-- Cloud backup stores ciphertext only for financial records and receipt objects.
+- Google Drive is the launch backup destination. Encrypt records and receipt content on the client before upload; Google Drive stores ciphertext only.
+- Request only the narrow Google Drive `drive.appdata` OAuth scope for the app-specific Drive area. Firebase Authentication and Drive authorization are separate grants.
+- Firebase may store a wrapped key envelope only if it cannot unwrap the key; never store a raw data-encryption key in Firebase.
 - Minimise analytics; never send transaction values, merchant names, tax status or OCR text.
 - Redact sensitive fields from logs and crash reports.
 - Lock sensitive screens after configurable inactivity; support device biometrics where appropriate.
@@ -38,9 +40,9 @@ Consider:
 Before encrypted backup and restore:
 - Who generates the data-encryption key?
 - How is the backup key made recoverable after loss of the original device?
-- What authentication and recovery factors authorize restore?
-- Can a backup be restored across Android and iOS?
-- Which Google-provided and iCloud storage services are intended, and what are their access and deletion semantics?
+- How does Google-account authorization enable key recovery without giving the server the decryption key?
+- Does the backup/restore PoC prove portability across iOS, Android and web?
+- How are Drive app-data deletion, Google account revocation, user storage quota exhaustion and backup lifecycle handled?
 - How are backups versioned, expired and deleted?
 
 Before later live sync:
@@ -58,8 +60,8 @@ Do not invent a custom cryptographic protocol. Prefer well-reviewed, maintained 
 - Automated tests confirm no sensitive fields are emitted to logs.
 - Database and receipt storage are encrypted at rest on supported native targets.
 - Web storage design passes a documented security review before release.
-- Backend cannot decrypt synced financial payloads.
-- Backup provider cannot read financial records or receipt content; a restore test from a replacement device succeeds without the original device.
+- Backend cannot decrypt backed-up or synced financial payloads.
+- Google Drive and Firebase cannot read financial records or receipt content; a restore test from a replacement device succeeds without the original device.
 - No secrets are committed.
 - Authenticated users cannot access another user's ciphertext objects.
 - Logout and account deletion behavior is documented and tested.

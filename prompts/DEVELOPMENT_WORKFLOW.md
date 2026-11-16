@@ -11,6 +11,7 @@ Do not create or modify files yet. Inspect this machine and report:
 - Flutter and Dart versions
 - Xcode and iOS simulator availability
 - Android SDK, Java and Android emulator availability
+- Flutter web browser availability
 - Git, GitHub CLI and Node versions
 - available disk space if easy to inspect
 - whether this folder is already a Git repository, whether it has uncommitted changes, and whether a GitHub remote is configured
@@ -23,14 +24,15 @@ Then identify compatibility risks for the proposed Flutter, Riverpod, Drift, enc
 Act as a product manager and senior Flutter architect. Review docs/PRODUCT_REQUIREMENTS.md and docs/UX_PRODUCT_DESIGN.md.
 
 Interview me one question at a time, only when the answer materially changes MVP scope, UX or architecture. Prioritise:
-1. Android and iOS launch priority
+1. iOS, Android and web launch scope
 2. registration and local/offline behavior
 3. wallet opening balance behavior
 4. receipt image and PDF support
 5. assessment years and complete verified relief coverage
 6. launch currency and cross-currency behavior
 7. transaction editing, archive-on-delete, refunds and recurring transactions
-8. optional app lock, encrypted backup/restore, key recovery and later live sync
+8. optional app lock, encrypted cross-platform backup/restore, key recovery and later live sync
+9. searchable public feature page, sign-in/register handoff, responsive behavior and same-ledger access across platforms
 
 Do not ask me to decide low-level implementation details that can be safely proposed. At the end, update the product docs with confirmed decisions and list unresolved risks. Do not write application code.
 ```
@@ -76,11 +78,13 @@ Before each PoC, state the exact question it is intended to answer. Keep PoCs is
 - Flutter app runs on the approved native target
 - Riverpod setup
 - Drift persistence and schema migration
-- native database encryption
-- encrypted receipt file write/read
-- web persistence feasibility separately, if web is in launch scope
+- native database encryption on iOS and Android
+- encrypted receipt file write/read for camera, gallery and PDF flows
+- browser persistence and key protection for the Flutter web app
+- portable encrypted backup/restore across iOS, Android and web using fake data and ciphertext
+- responsive layouts and keyboard navigation across supported browser sizes
 
-Do not connect production authentication, create cloud resources, upload real data or enable live sync. Use fake data and ciphertext only. Test the approved backup/restore provider path only after its design is approved. Validate Android and iOS. Run tests and report exact versions, commands, results and limitations. Update ADRs with evidence.
+Do not connect production authentication, create cloud resources, upload real data or enable live sync. Use fake data and ciphertext only. Validate Google Drive API access with a test account and isolated approved OAuth setup before using any production project. Validate `drive.appdata` scope, quota/revocation behavior and portable restore across iOS, Android and web. Run tests and report exact versions, commands, results and limitations. Update ADRs with evidence.
 ```
 
 ## Step 6 — Create the production app shell
@@ -167,11 +171,11 @@ Walk through:
 Identify confusing labels, unnecessary steps, clutter and misleading tax wording. Fix only approved issues. Add widget/integration tests for critical flows. Do not add new features during this pass.
 ```
 
-## Step 11 — Sync and web (only if approved)
+## Step 11 — Live sync (only if approved)
 ```text
-Do not begin sync or web implementation from assumptions. Re-read the security ADRs and Phase 0 evidence.
+Do not begin live sync from assumptions. Web is in launch scope; re-read the web security ADRs and Phase 0 evidence before web implementation.
 
-For web, prove storage, browser cryptography, file access, routing and offline behavior. For sync, first produce a protocol design covering key creation, device enrolment, encryption envelope, versioning, idempotency, conflict resolution, revocation, recovery and deletion. Have the design reviewed before coding. Backend must never receive readable financial payloads or receipt bytes.
+For live sync, first produce a protocol design covering key creation, device enrolment, encryption envelope, versioning, idempotency, conflict resolution, revocation, recovery and deletion. Have the design reviewed before coding. Backend must never receive readable financial payloads or receipt bytes.
 ```
 
 ## Step 12 — Release readiness

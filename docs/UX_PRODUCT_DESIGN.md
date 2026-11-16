@@ -20,6 +20,12 @@ Recommended primary destinations:
 
 Use a persistent `+` quick action for Add transaction. On mobile, a bottom sheet or dedicated focused screen can present Expense, Income and Transfer.
 
+### Public web entry
+- Provide a public, searchable feature page explaining the everyday ledger and Malaysian tax-relief companion.
+- Include clear `Sign in` and `Register` actions that open the authenticated Flutter web app.
+- Proposed implementation: semantic static web content beside the Flutter web app, pending technical/design approval. Keep the feature page useful without requiring the app bundle to render its main content.
+- After authentication, users access the same logical ledger as on mobile through encrypted backup/restore. Do not imply that changes synchronize automatically.
+
 ## 3. Home screen
 Top:
 - Greeting / selected period.
@@ -95,6 +101,8 @@ Show only the next useful question. Example: if a rule requires the purchase to 
 - Never rely on colour alone for status.
 - Provide skeleton/loading, empty, error, offline and success states.
 - Web layout should have a sensible max content width and keyboard focus indicators.
+- Adapt navigation, information density and controls to phone, tablet and desktop widths; do not simply stretch a phone layout.
+- Support touch, pointer and keyboard input in web flows, with visible focus and semantic controls.
 - Localise all user-facing text; do not embed English strings in widgets.
 
 ## 8. Design system starter tokens
