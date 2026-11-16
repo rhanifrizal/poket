@@ -67,4 +67,6 @@ Do not invent a custom cryptographic protocol. Prefer well-reviewed, maintained 
 - A restore test proves that encrypted backup recovery works before backup is advertised.
 
 ## 6. Release gate
+Phase 0 status (2026-11-16): a synthetic Node/Web Crypto envelope prototype passes local tests, but real PRF support, recovery phrase UX, Google Drive transfer, cross-platform interoperability and replacement-device restore remain unverified. See poc/backup_recovery/results/summary.md.
+
 No production encrypted backup or cloud receipt backup until the implementation, key recovery, restore flow and threat model have been reviewed and tested. No live sync or marketing claim such as “end-to-end encrypted” until its protocol has also been independently reviewed and tested.

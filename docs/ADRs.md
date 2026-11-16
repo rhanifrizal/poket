@@ -33,7 +33,7 @@ Status labels: Proposed, Accepted, Rejected, Superseded.
 **Reason:** Preserve offline use and offer recovery without exposing readable financial data to cloud storage.  
 **Trade-off:** Drive OAuth, user storage quotas and backup key recovery add launch complexity; iCloud-only users are not supported for backup at launch, and there is no live synchronization between devices.
 **Key recovery direction:** Evaluate passkey PRF as the primary way to derive a wrapping key for a random data-encryption key, with a user-held recovery phrase as fallback. The login password and Google account authorization are not encryption keys. Never upload the plaintext data-encryption key or recovery phrase.
-**Validation:** Phase 0 Google Drive API PoC using fake ciphertext; verify PRF and recovery-phrase flows, loss/replacement-device recovery, and portable restore across iOS, Android and web. Handle unsupported PRF explicitly; do not advertise backup until portability, OAuth verification and security review pass. iCloud backup remains future scope.
+**Validation:** Phase 0 local synthetic Node/Web Crypto envelope tests pass, but actual passkey PRF, recovery phrase UX, Google Drive transfer, and replacement-device restore are unverified. Continue the platform and Drive PoCs; do not advertise backup until portability, OAuth verification and security review pass. See poc/backup_recovery/results/summary.md. iCloud backup remains future scope.
 
 ## ADR-006 — Separate native and web persistence security
 **Status:** Proposed  

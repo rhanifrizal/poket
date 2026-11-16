@@ -24,6 +24,8 @@ Exit criteria:
 - No unresolved blocker hidden behind assumptions.
 - User approves architecture and MVP scope.
 
+Phase 0 backup gate is not passed: only the local synthetic envelope has been verified; platform PRF, generated recovery phrase, Drive transfer and replacement-device restore remain open. See poc/backup_recovery/results/summary.md.
+
 ## Phase 1 — Responsive local-first ledger MVP (iOS, Android and web)
 - App shell, themes, localisation, responsive/adaptive layouts and required Firebase Authentication registration.
 - Public searchable feature page with sign-in/register routes into the authenticated Flutter web app. Static semantic page is the current proposal pending review.
