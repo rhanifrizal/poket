@@ -1,0 +1,39 @@
+# macOS and local editor files
+.DS_Store
+.AppleDouble
+.LSOverride
+*.swp
+*.swo
+
+# Secrets and local environment configuration
+.env
+.env.*
+!.env.example
+*.jks
+*.keystore
+*.p12
+*.mobileprovision
+google-services.json
+GoogleService-Info.plist
+
+# Flutter and Dart generated files
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+coverage/
+
+# Native build artifacts
+android/.gradle/
+android/local.properties
+ios/Flutter/Generated.xcconfig
+ios/Flutter/flutter_export_environment.sh
+ios/Pods/
+macos/Pods/
+
+# IDE metadata
+.idea/
+*.iml
