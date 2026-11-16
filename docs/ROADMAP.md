@@ -9,7 +9,7 @@ Tasks:
 - Validate required registration with Firebase Authentication and the Flutter application shell on all three targets.
 - Test Drift persistence and migrations.
 - Prove native database encryption with a maintained package.
-- Design and PoC client-side encrypted Google Drive backup and restore, including account-based key recovery after loss of the original device. Use fake data and ciphertext only; prove portable restore among iOS, Android and web.
+- Design and PoC client-side encrypted Google Drive backup and restore. Evaluate passkey PRF for wrapping a random data-encryption key, with a user-held recovery phrase fallback. Use fake data and ciphertext only; test replacement-device recovery and portable restore among iOS, Android and web.
 - Validate the `drive.appdata` OAuth consent and verification requirements, user Drive quota behavior, app-data deletion/revocation, and upload/download limits.
 - Decide whether backups run automatically, manually, or both, including retention and deletion behavior.
 - Test camera, gallery and PDF selection plus encrypted local receipt storage and backup on each supported platform.

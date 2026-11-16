@@ -126,7 +126,7 @@ For later live sync:
 - Use idempotent operation IDs and versioned envelopes.
 - Define conflict resolution per entity; never silently overwrite a financial transaction.
 - Design device enrolment, key recovery, rotation, revoked devices and account deletion before release.
-- Consider a user-held recovery phrase or another carefully reviewed recovery method; do not promise recoverability without a tested key-management design.
+- Evaluate passkey PRF for wrapping a random data-encryption key, with a user-held recovery phrase fallback. Do not promise recoverability until replacement-device recovery is tested on every launch platform.
 - Sync is disabled until a security review and cross-device PoC pass.
 
 ## 8. Platform strategy

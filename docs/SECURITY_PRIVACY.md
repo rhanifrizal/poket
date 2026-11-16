@@ -36,20 +36,19 @@ Consider:
 - Protect exports; warn users that exported CSV/PDF files are unencrypted unless user chooses a protected format.
 - Provide account deletion and local data deletion flows with clear consequences.
 
-## 4. Key management questions to resolve
-Before encrypted backup and restore:
-- Who generates the data-encryption key?
-- How is the backup key made recoverable after loss of the original device?
-- How does Google-account authorization enable key recovery without giving the server the decryption key?
-- Does the backup/restore PoC prove portability across iOS, Android and web?
-- How are Drive app-data deletion, Google account revocation, user storage quota exhaustion and backup lifecycle handled?
-- How are backups versioned, expired and deleted?
+## 4. Key management direction and open validation
+- Generate a random data-encryption key on the client. Do not derive the data-encryption key directly from a login password or Google account.
+- Evaluate passkey PRF as the primary client-side key-wrapping mechanism and a user-held recovery phrase as a fallback for unsupported platforms or lost credentials.
+- Use maintained, reviewed cryptographic libraries; do not create custom cryptographic primitives or protocols. The recovery phrase must have sufficient entropy and a documented safe handling and rotation flow.
+- A Google login or Drive grant proves identity or authorizes storage access; neither alone reveals the encryption key. Firebase may store only a wrapped key envelope that it cannot unwrap.
+- Phase 0 must verify PRF availability and consistent derivation behavior on iOS, Android and web, plus recovery from a replacement device using each supported recovery path. Treat unsupported PRF as an explicit fallback path, not a silent downgrade.
+- Also validate Drive app-data deletion, Google account revocation, quota exhaustion, backup versioning, retention and deletion behavior.
 
 Before later live sync:
 - How is the key safely provided to an additional device?
 - How does a new device join?
 - What happens if a user loses every enrolled device?
-- Is recovery user-held, trusted-device-assisted or escrowed?
+- How will future device enrolment and recovery interact with the launch recovery phrase?
 - How are keys rotated and devices revoked?
 - How are old encrypted backups migrated?
 - What data remains after account deletion?
