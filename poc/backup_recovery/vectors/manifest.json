@@ -1,0 +1,43 @@
+{
+  "fixtureType": "synthetic",
+  "syntheticLedger": {
+    "userId": "synthetic-user-001",
+    "walletName": "Synthetic Wallet",
+    "currency": "MYR",
+    "amountMinor": 12345,
+    "note": "Synthetic test data; not a real transaction"
+  },
+  "syntheticReceiptBytes": [80, 79, 75, 69, 84, 45, 84, 69, 83, 84],
+  "envelope": {
+    "version": 1,
+    "payloadEncryption": "AES-256-GCM",
+    "keyDerivation": "HKDF-SHA-256",
+    "keyWrapping": "AES-256-GCM",
+    "requiredFields": [
+      "version",
+      "payloadEncryption",
+      "keyDerivation",
+      "keyWrapping",
+      "payloadNonce",
+      "keySlots",
+      "ciphertext"
+    ],
+    "keySlotRequiredFields": [
+      "slotId",
+      "keyDerivation",
+      "keyDerivationSalt",
+      "keyWrapping",
+      "wrappedKeyNonce",
+      "wrappedKey"
+    ],
+    "proposedSlots": [
+      "passkey-prf",
+      "recovery-phrase"
+    ],
+    "keySlotOptionalFields": [
+      "prfInput"
+    ],
+    "prfInputLabel": "Poket Backup Key Slot v1",
+    "syntheticPrfInput": "AwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwM"
+  }
+}
