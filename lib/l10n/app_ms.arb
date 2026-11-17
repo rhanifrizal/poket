@@ -1,0 +1,18 @@
+{
+  "@@locale": "ms",
+  "appTitle": "Poket",
+  "home": "Utama",
+  "transactions": "Transaksi",
+  "tax": "Cukai",
+  "wallets": "Dompet",
+  "settings": "Tetapan",
+  "comingSoonTitle": "Paparan kewangan anda yang lebih jelas akan datang",
+  "comingSoonBody": "Bahagian ini sedang disediakan. Maklumat kewangan anda direka bentuk untuk kekal peribadi.",
+  "navigationLabel": "Navigasi utama",
+  "destinationContentLabel": "Skrin {destination}",
+  "@@destinationContentLabel": {
+    "placeholders": {
+      "destination": { "type": "String" }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "@@locale": "en",
+  "appTitle": "Poket",
+  "home": "Home",
+  "transactions": "Transactions",
+  "tax": "Tax",
+  "wallets": "Wallets",
+  "settings": "Settings",
+  "comingSoonTitle": "A clearer view of your money is on its way",
+  "comingSoonBody": "This area is being prepared. Your financial information stays private by design.",
+  "navigationLabel": "Primary navigation",
+  "destinationContentLabel": "{destination} screen",
+  "@@destinationContentLabel": {
+    "placeholders": {
+      "destination": { "type": "String" }
+    }
+  }
+}
